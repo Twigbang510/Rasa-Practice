@@ -1,0 +1,63 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: greet
+  - action: action_hello_world
+
+- story: food_review_1
+  steps:
+  - intent: food_review
+  - action: action_recommend
+
+- story: ask_joke_category
+  steps:
+  - intent: joke
+  - action: utter_ask_joke_category
+  - intent: category_joke
+  - action: action_joke
+- story: interactive_story_1
+  steps:
+  - intent: joke
+  - action: utter_ask_joke_category
+  - intent: category_joke
+    entities:
+    - category_ent: Programming
+  - action: action_joke
+  - intent: category_joke
+    entities:
+    - category_ent: Pun
+  - action: action_joke
